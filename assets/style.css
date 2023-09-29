@@ -1,0 +1,50 @@
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.header {
+    background-color: #A198C6;
+    padding: 5px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #86025C;
+}
+
+.search {
+    padding: 1px;
+    text-align: center;
+    background-color: #65A2BC;
+}
+
+h2,
+.history,
+.forecast {
+    margin-top: 20px;
+    color: #3B1366;
+    font-size: 2rem;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 14px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #15385F;
+    color: #ECD8DE;
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+    padding: 5px;
+}
+
+#weatherResults {
+    text-align: center;
+}
