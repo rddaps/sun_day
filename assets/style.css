@@ -20,11 +20,26 @@ h1 {
 }
 
 h2,
-.history,
-.forecast {
+.history {
     margin-top: 20px;
     color: #3B1366;
     font-size: 2rem;
+}
+
+h3 {
+    text-align: left;
+    color: #3B1366;
+    font-size: 1.5rem;
+}
+
+.currentWeather {
+    text-align: left;
+}
+
+h4 {
+    text-align: right;
+    color: #3B1366;
+    font-size: 1.5rem;
 }
 
 input[type="text"] {
