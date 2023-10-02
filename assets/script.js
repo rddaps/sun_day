@@ -55,12 +55,12 @@ function saveHistory() {
 
 function displayWeather(weatherResults) {
     $(`#currentCity`)
-        .text(searchInput + moment().format('MMMM Do YYYY'))
-        .append('<img src ="https://openweathermap.org/img/w/" + response.weatherResults[0].icon + ".png".>');
+        .text(searchInput + "," + moment.unix(weatherResults.date).format("MM/DD/YYYY"))
+        .append('<img src="http://openweathermap.org/img/wn/'+ weatherResults.current.weather[0].icon +'.png"/>');
 
-        $(`currentTemp`).text("Temp: " + weatherInfo.current.temp)
-        $(`currentWind`).text("Wind Speed: " + weatherInfo.current.windSpeed);
-        $(`currentHumidity`).text("Humidity: " + weatherInfo.current.humidity + "%");
+        $(`#currentTemp`).text("Temp: " + weatherResults.current.temp);
+        $(`#currentWind`).text("Wind Speed: " + weatherResults.current.windSpeed);
+        $(`#currentHumidity`).text("Humidity: " + weatherResults.current.humidity + "%");
 
         for(i=0; i<5; i++) {
 
