@@ -14,10 +14,10 @@ function processSearch(event) {
   if (!searchInputValue) {
     return;
   }
-
+  $('#searchInput').val('');
   saveHistory(searchInputValue);
 
-  var coordinatesUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${searchInput}&limit=1&appid=${apiKey}`;
+  var coordinatesUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${searchInputValue}&limit=1&appid=${apiKey}`;
 
   fetch(coordinatesUrl)
     .then(function (response) {
@@ -27,6 +27,7 @@ function processSearch(event) {
       return response.json();
     })
     .then(function (data) {
+      console.log("Coordinates Data:", data);
       var latitude = data[0].lat;
       var longitude = data[0].lon;
 
@@ -79,30 +80,31 @@ function displaySearchHistory() {
 
 function displayWeather(currentWeatherData, futureWeatherData) {
   console.log(currentWeatherData, futureWeatherData);
-  var currentCity = ${searchInput.value}, ${moment.unix(currentWeatherData.dt).format("MM/DD/YYYY")};
-    .append(
-      '<img src="http://openweathermap.org/img/wn/' +
-        currentWeatherData.weather[0].icon +
-        '.png"/>'
-    );
+  var currentCity = `${searchInput.value}, ${moment
+    .unix(currentWeatherData.dt)
+    .format("MM/DD/YYYY")}`;
+    currentCity += `<img src="http://openweathermap.org/img/wn/${currentWeatherData.weather[0].icon}.png"/>`;
 
-    var currentTemp = Temp: ${currentWeatherData.main.temp}°C;
-    var currentWind = Wind Speed: ${currentWeatherData.wind.speed}m/s;
-    var currentHumidity = Humidity: ${currentWeatherData.main.humidity}%;
-    $("#currentCity").text(currentCity);
-    $("#currentTemp").text(currentTemp);
-    $("#currentWind").text(currentWind);
-    $("#currentHumidity").text(currentHumidity);
+  var currentTemp = `Temp: ${currentWeatherData.main.temp}°C`;
+  var currentWind = `Wind Speed: ${currentWeatherData.wind.speed}m/s`;
+  var currentHumidity = `Humidity: ${currentWeatherData.main.humidity}%`;
+    console.log('Search Input Value:', searchInput.value);
+  $("#currentCity").text(currentCity);
+  $("#currentTemp").text(currentTemp);
+  $("#currentWind").text(currentWind);
+  $("#currentHumidity").text(currentHumidity);
 
   $("#weatherResults").empty();
   for (var i = 0; i < futureWeatherData.length; i += 8) {
     var forecastDate = futureWeatherData[i].dt_txt;
+    var icon = `<img src="http://openweathermap.org/img/wn/${futureWeatherData[i].weather[0].icon}.png"/>`;
     var temperature = futureWeatherData[i].main.temp;
     var humidity = futureWeatherData[i].main.humidity;
     var windSpeed = futureWeatherData[i].wind.speed;
 
     var forecastItem = `<div class="forecast-item">
                             <h3>${forecastDate}</h3>
+                            <p>${icon}</p>                            
                             <p>Temperature: ${temperature}°C</p>
                             <p>Humidity: ${humidity}%</p>
                             <p>Wind Speed: ${windSpeed} m/s</p>
