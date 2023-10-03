@@ -26,6 +26,11 @@ h2,
     font-size: 2rem;
 }
 
+.search h2,
+.search .history {
+    margin-top: 20px;
+}
+
 h3 {
     text-align: left;
     color: #3B1366;
@@ -53,6 +58,7 @@ button {
     background-color: #15385F;
     color: #ECD8DE;
     cursor: pointer;
+    border: none;
 }
 
 ul {
@@ -62,4 +68,11 @@ ul {
 
 #weatherResults {
     text-align: center;
+}
+
+.forecast-item {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
 }
